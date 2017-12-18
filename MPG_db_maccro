@@ -4,8 +4,26 @@ Public LastRow_data As Integer
 ' la macro tout permet d'obtenir la db totale
 
 Sub tout()
+prep_data
 copier_coller
 suppr_absents
+suppr_absents
+End Sub
+
+Sub prep_data()
+
+    Sheets.Add(After:=Worksheets(1)).Name = "Data"
+
+
+    Worksheets("PSG").Activate
+    Cells(7, 1).EntireRow.Copy
+
+
+    Worksheets("Data").Activate
+    Worksheets("Data").Cells(1, 1).Select
+    ActiveSheet.Paste
+
+
 End Sub
 
 
@@ -84,5 +102,9 @@ Next i
 
 
 End Sub
+
+
+
+
 
 
