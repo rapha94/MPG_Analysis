@@ -21,7 +21,7 @@ Sub copier_coller()
 
     'Définit la taille du tableau et le type de données.
 
-    Dim club(20) As String
+    Dim club(19) As String
     Dim i As Integer
     
     'Alimente les éléments du tableau
@@ -43,12 +43,11 @@ Sub copier_coller()
     club(15) = "FCM"
     club(16) = "RCSA"
     club(17) = "ASC"
-    club(18) = "RCSA"
-    club(19) = "ASC"
-    club(20) = "ESTAC"
+    club(18) = "PSG"
+    club(19) = "ESTAC"
     
     'Boucle sur les éléments du tableau pour lire leur contenu
-    For i = 0 To 20
+    For i = 0 To 19
     derniere_ligne
 
     Worksheets(club(i)).Select
@@ -85,10 +84,5 @@ Next i
 
 
 End Sub
-
-
-
-
-
 
 
