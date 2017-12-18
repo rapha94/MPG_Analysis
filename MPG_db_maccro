@@ -1,0 +1,94 @@
+Public LastRow_data As Integer
+
+
+' la macro tout permet d'obtenir la db totale
+
+Sub tout()
+copier_coller
+suppr_absents
+End Sub
+
+
+Sub derniere_ligne()
+
+Worksheets("Data").Select
+LastRow_data = Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+End Sub
+
+
+Sub copier_coller()
+
+    'Définit la taille du tableau et le type de données.
+
+    Dim club(20) As String
+    Dim i As Integer
+    
+    'Alimente les éléments du tableau
+    club(0) = "OM"
+    club(1) = "OL"
+    club(2) = "OGCN"
+    club(3) = "ASSE"
+    club(4) = "LOSC"
+    club(5) = "FCGB"
+    club(6) = "MHSC"
+    club(7) = "TFC"
+    club(8) = "SRFC"
+    club(9) = "FCN"
+    club(10) = "ASM"
+    club(11) = "SMC"
+    club(12) = "EAG"
+    club(13) = "SCO"
+    club(14) = "DFCO"
+    club(15) = "FCM"
+    club(16) = "RCSA"
+    club(17) = "ASC"
+    club(18) = "RCSA"
+    club(19) = "ASC"
+    club(20) = "ESTAC"
+    
+    'Boucle sur les éléments du tableau pour lire leur contenu
+    For i = 0 To 20
+    derniere_ligne
+
+    Worksheets(club(i)).Select
+
+    Dim LastRow_target As Integer
+    LastRow_target = Cells(Rows.Count, 1).End(xlUp).Row
+
+    Worksheets(club(i)).Activate
+    Range("A8:AR" & LastRow_target).Copy
+
+    x = LastRow_data
+    Worksheets("Data").Activate
+    Worksheets("Data").Cells(x, 1).Select
+    ActiveSheet.Paste
+Next i
+End Sub
+
+
+Sub suppr_absents()
+
+
+LastRow_data = Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+
+Dim a As Integer
+a = 0
+
+
+For i = 1 To LastRow_data
+
+If Cells(i, 1).Interior.ColorIndex <> xlColorIndexNone Then Cells(i, 1).EntireRow.Delete
+
+Next i
+
+
+End Sub
+
+
+
+
+
+
+
